@@ -14,7 +14,9 @@ class Strings:
         Returns:
             bool: True si es palíndromo, False en caso contrario
         """
-        pass
+        awo="".join(texto.lower().split(" "))
+    
+        return awo==awo[::-1]
     
     def invertir_cadena(self, texto):
         """

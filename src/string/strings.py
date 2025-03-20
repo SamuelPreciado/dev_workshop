@@ -1,5 +1,5 @@
 class Strings:
-
+    #hola
     def es_palindromo(self, texto):
 
         palabra="".join(texto.lower().split(" "))

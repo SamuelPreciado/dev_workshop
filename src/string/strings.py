@@ -53,25 +53,27 @@ class Strings:
        
    
     def es_numero_entero(self, texto):
-
-        texto = texto.strip()
-
         if not texto:
             return False
-
-        if texto[0] == "-":
-            texto = texto[1:]  
-
-        return all("-9" <= c <= "9" for c in texto) and len(texto) > 0
-   
+        if texto[0] in ('-', '+'):
+            texto = texto[1:]
+        return all(c in '0123456789' for c in texto) and bool(texto)
     def cifrar_cesar(self, texto, desplazamiento):
-
-        pass
-   
+        resultado = ""
+        for char in texto:
+            if char.isalpha():
+                inicio = ord('A') if char.isupper() else ord('a')
+                resultado += chr(inicio + (ord(char) - inicio + desplazamiento) % 26)
+            else:
+                resultado += char
+        return resultado
     def descifrar_cesar(self, texto, desplazamiento):
-
-        pass
-   
+        return self.cifrar_cesar(texto, -desplazamiento)
     def encontrar_subcadena(self, texto, subcadena):
-
+        posiciones = []
+        len_sub = len(subcadena)
+        for i in range(len(texto) - len_sub + 1):
+            if texto[i:i + len_sub] == subcadena:
+                posiciones.append(i)
+        return posiciones
         pass
